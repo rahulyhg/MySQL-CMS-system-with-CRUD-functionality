@@ -1,1 +1,1 @@
-# MySQL-CMS-system-with-CRUD-functionality
+Starter MySQL-CMS-system-with-CRUD-functionality template
