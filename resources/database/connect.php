@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$db		  = "crm";
+$db		  = "alphacrm";
 
 $connection = mysqli_connect($hostname, $username, $password, $db);
 
