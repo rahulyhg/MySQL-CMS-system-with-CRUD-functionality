@@ -1,19 +1,15 @@
 <?php
 /*
 * File: CompanyTbls/index.php
-* By: 	https://www.linkedin.com/in/darko-borojevi%C4%87-54b03135/
-* Date: 13.11.2107.
-* Copyright (c) TipoIT 2017
+* 
 *
-* Company tables
-*
-*/
-require("../../resources/database/connect.php");
-
-spl_autoload_register(function ($class) {
-    include '../includes/' . $class . '.php';
-});
-
+* Company tables listings
+**/
+require('../../resources/Config/Config.php');
+require('../includes/Models/Model.php');
+require('../includes/Navigation.php');
+//starting config
+$config = new App\Conf\Config;
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,10 +18,6 @@ spl_autoload_register(function ($class) {
 	<style type="text/css">
 		body{
 			font-family: tahoma, sans-serif;
-		}
-
-		#links{
-			margin: 40px;
 		}
 
 		a{
@@ -41,7 +33,7 @@ spl_autoload_register(function ($class) {
 			font-size: 16px;
 		}
 
-		#link{
+		#links{
 			margin: 40px;
 			float: left;
 			clear: both;
@@ -50,45 +42,33 @@ spl_autoload_register(function ($class) {
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 		}
+
+		.company-box{
+			width: 40%;
+			margin: 40px;
+			padding: 12px;
+			border: 2px solid #000;
+		}
 	</style>
 </head>
 <body>
 	<div id="wrapper">
 
-		<div id="links">
+		<div class="company-box">
 			<?php
-				//lists company tables
-				$showComTables = "SHOW TABLES FROM alphacrm LIKE '%comp%'";
 
-				$query_one = mysqli_query($connection, $showComTables);
+				$model = new App\Mod\Model;
+				//calling a method for showing all company tables
+				$model->showAllCompanyTables();
 
-				if (!$query_one) {
-
-					$_SESSION['errors'][] = "Query failed! ".mysqli_error($connection)."";
-					die(header("Location:../index.php"));
-					
-				}
-
-				if ($query_one) {
-
-					while ($row = mysqli_fetch_array($query_one)) {
-						echo '<div>';
-						echo '<a href="../CompTblsData/'.$row[0].'.php">'.$row[0].'</a><hr>';
-						echo '</div>';
-					}
-					
-				}
-
-				// Free result set
-				mysqli_free_result($query_one);
-
-				mysqli_close($connection);
 			?>
 		</div>
 
-		<div id="link">
+		<div id="links">
 			<?php
-				$nav = new Navigation();
+				//calling a method for showing navigation
+				$navigation = new App\Nav\Navigation;
+
 			?>
 		</div>
 

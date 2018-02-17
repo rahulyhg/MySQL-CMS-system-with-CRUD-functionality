@@ -8,8 +8,8 @@
 * Index file
 *
 */
-require("../resources/database/connect.php");
-
+require('../resources/Config/Config.php');
+//require('../resources/Connection/Connection.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,13 +56,13 @@ require("../resources/database/connect.php");
 				if (isset($_SESSION['errors']) && $_SESSION['errors'] != "") {
 					foreach ($_SESSION['errors'] as $error) {
 						echo '<p style="color:#e60000;margin:40px;">';
-						echo($error);
+						echo $error;
 						echo '</p>';
 
 					}
 				}
 
-				unset($_SESSION['errors']);
+				//unset($_SESSION['errors']);
 			?>
 		</div>
 		<br>
@@ -76,7 +76,7 @@ require("../resources/database/connect.php");
 					}
 				}
 
-				unset($_SESSION['success']);
+				//unset($_SESSION['success']);
 			?>
 		</div>
 		<div class="buttonBox">

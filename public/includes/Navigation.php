@@ -1,7 +1,8 @@
 <?php
 /**
-* Navigation class
+*navigation class
 */
+namespace App\Nav;
 
 class Navigation
 {	
